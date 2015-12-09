@@ -11,13 +11,11 @@ end
 
 
 function love.update(dt)
-	world_camera:move(0.1,0)
+	world_camera:move(0.1,0)	
 end
 
 function love.draw()
-	world_camera:attach()
-	game_world:draw()
-	world_camera:detach()
+	game_world:draw(world_camera)
 end
 
 function love.quit()
@@ -32,6 +30,11 @@ function love.focus(f)
 	if not f then love.event.quit() end
 end
 
+function love.keypressed(key)
+	if key == 'escape' then
+		love.event.quit()
+	end
+end
 
 ------ Helpers -------
 
